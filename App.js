@@ -8,14 +8,16 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
-import List from "./components/List";
+import GoalList from './components/GoalList';
+import GoalInput from './components/GoalInput'
+// import GoalInput from './GoalInput';
 export default function App() {
   // Data/Functionaly Used Const, Functions and CSS After Return
   const [outputText, setOutputText] = useState("See Lemur?");
   const [enteredGoal, setEnteredGoal] = useState("");
   const [goals, setGoals] = useState([]);
-  let listItemCount = -1;
 
   return (
     <View style={styles.container}>
@@ -39,23 +41,9 @@ export default function App() {
           style={{ color: "#ff5c5c", fontWeight: "bold", padding: 30 }}
         />
       </View>
-      <ScrollView
-        contentContainerStyle={[viewStyles.topDown, { marginVertical: 20 }]}
-      >
-        {goals.map((goal) => {
-          listItemCount += 1;
-          return (
-            <View key={listItemCount}>
-              <Text style={listItemStyles.main}>
-                {listItemCount}. {goal}
-              </Text>
-            </View>
-          );
-        })}
-      </ScrollView>
+      <GoalList goals={goals}/>
     </View>
   );
-
   //-----------------------------Functions Getters and Setters
   function updateInputText(enteredInputText) {
     setEnteredGoal(enteredInputText);
@@ -99,14 +87,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-const listItemStyles = StyleSheet.create({
-  main: {
-    margin: 10,
-    textAlign: "left",
-    borderColor: "black",
-    borderWidth: 1,
-  },
-});
 const buttonStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -116,3 +96,23 @@ const buttonStyles = StyleSheet.create({
   },
 });
 //-----------------------------End
+
+
+
+//--------------------Scrollview vs Flatlist
+      //{/*ScrollView Not great for a list of unknown length */}
+      //  Renders all elements in advance ahead of need and can reduce initial load time
+      // <ScrollView
+      //   contentContainerStyle={[viewStyles.topDown, { marginVertical: 20 }]}
+      // >
+      //   {goals.map((goal) => {
+      //     listItemCount += 1;
+      //     return (
+      //       <View key={listItemCount}>
+      //         <Text style={listItemStyles.main}>
+      //           {listItemCount}. {goal}
+      //         </Text>
+      //       </View>
+      //     );
+      //   })}
+      // </ScrollView>
