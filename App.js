@@ -3,21 +3,17 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   Button,
   TextInput,
-  ScrollView,
-  FlatList,
 } from "react-native";
 import GoalList from './components/GoalList';
 import GoalInput from './components/GoalInput'
-// import GoalInput from './GoalInput';
 export default function App() {
   // Data/Functionaly Used Const, Functions and CSS After Return
   const [outputText, setOutputText] = useState("See Lemur?");
-  const [enteredGoal, setEnteredGoal] = useState("");
-  const [goals, setGoals] = useState([]);
+  
+  
 
   return (
     <View style={styles.container}>
@@ -26,34 +22,12 @@ export default function App() {
         title={outputText}
         style={buttonStyles.container}
       />
-      {/* This is using flex direction */}
-      <View style={viewStyles.main}>
-        <TextInput
-          onChangeText={updateInputText}
-          id="textInput"
-          value={enteredGoal}
-          style={textInputStyles.main}
-        />
-        <Button
-          title="Add"
-          color={color}
-          onPress={addInputToList}
-          style={{ color: "#ff5c5c", fontWeight: "bold", padding: 30 }}
-        />
-      </View>
+      <GoalInput/>
       <GoalList goals={goals}/>
     </View>
   );
   //-----------------------------Functions Getters and Setters
-  function updateInputText(enteredInputText) {
-    setEnteredGoal(enteredInputText);
-  }
-  function addInputToList() {
-    const trimEdEnteredGoal = enteredGoal.trim();
-    if (trimEdEnteredGoal !== null && trimEdEnteredGoal !== "") {
-      setGoals([...goals, enteredGoal]);
-    }
-  }
+
   function changeOutputText() {
     let toUpdateText = outputText;
     toUpdateText == "Ok Lemur!!"
