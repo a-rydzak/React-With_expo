@@ -10,7 +10,7 @@ export default function GoalInput(props) {
     </View>
   );
 }
-
+//-----------------------------Styles and CSS
 const listItemStyles = StyleSheet.create({
   main: {
     margin: 10,

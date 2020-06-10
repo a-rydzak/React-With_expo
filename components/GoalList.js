@@ -3,8 +3,8 @@ import {
     FlatList,
     StyleSheet,
   } from "react-native";
-  
 import GoalItem from './GoalItem';
+
 export default function GoalList(props){
     return(
       <FlatList data={props.goals} renderItem={itemData => (
@@ -16,7 +16,7 @@ export default function GoalList(props){
       </FlatList>
     )
 }
-
+//-----------------------------Styles and CSS
 const viewStyles = StyleSheet.create({
     main: { flexDirection: "row", justifyContent: "center" },
     topDown: { flexDirection: "column", justifyContent: "center", width: "100%" },
