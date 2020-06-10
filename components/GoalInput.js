@@ -20,7 +20,7 @@ export default function GoalInput(props) {
       />
     </View>
   );
-
+  //--------------------------Helper Functions
   function updateInputText(enteredInputText) {
     props.setEnteredGoal(enteredInputText);
   }

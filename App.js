@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { StyleSheet, View, Button, TextInput } from "react-native";
 import GoalList from "./components/GoalList";
 import GoalInput from "./components/GoalInput";
+
 export default function App() {
-  // Data/Functionaly Used Const, Functions and CSS After Return
+  // Data/Functionaly Getters/Setters
   const [outputText, setOutputText] = useState("See Lemur?");
   const [goals, setGoals] = useState([]);
   const [enteredGoal, setEnteredGoal] = useState("");
@@ -32,8 +33,7 @@ export default function App() {
       <GoalList goals={goals} />
     </View>
   );
-  //-----------------------------Functions Getters and Setters
-
+  //--------------------------Helper Functions
   function changeOutputText() {
     let toUpdateText = outputText;
     toUpdateText == "Ok Lemur!!"
@@ -43,7 +43,6 @@ export default function App() {
   }
 }
 //-----------------------------Styles and CSS
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
