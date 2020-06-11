@@ -16,8 +16,6 @@ export default function GoalList(props){
       </FlatList>
     )
 }
-
-
 //-----------------------------Styles and CSS
 const viewStyles = StyleSheet.create({
     main: { flexDirection: "row", justifyContent: "center" },

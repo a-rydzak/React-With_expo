@@ -8,6 +8,7 @@ import GoalInput from "./components/GoalInput";
 export default function App() {
   // Data/Functionaly Getters/Setters
   const [outputText, setOutputText] = useState("See Lemur?");
+  const [modalGoalsShown, setModalGoalsShown] = useState(false);
   const [goals, setGoals] = useState([]);
   const [enteredGoal, setEnteredGoal] = useState("");
 
@@ -16,6 +17,7 @@ export default function App() {
     if (trimEdEnteredGoal !== null && trimEdEnteredGoal !== "") {
       setGoals([...goals, enteredGoal]);
       setEnteredGoal("");
+      setModalGoalsShown(false)
     }
   };
 
@@ -24,9 +26,9 @@ export default function App() {
       <Button
         onPress={changeOutputText}
         title={outputText}
-        style={buttonStyles.container}
       />
       <GoalInput
+        modalGoalsShown={modalGoalsShown}
         addInputToList={addInputToList}
         enteredGoal={enteredGoal}
         setEnteredGoal={setEnteredGoal}
@@ -36,10 +38,17 @@ export default function App() {
   );
   //--------------------------Helper Functions
   function changeOutputText() {
+    let toShowModel = modalGoalsShown
     let toUpdateText = outputText;
     toUpdateText == "Ok Lemur!!"
       ? (toUpdateText = "See Lemur?")
       : (toUpdateText = "Ok Lemur!!");
+    
+    toShowModel === false
+      ? (toShowModel = true)
+      : (toShowModel = false);
+
+    setModalGoalsShown(toShowModel)
     setOutputText(toUpdateText);
   }
   function onDelete(goalId){
@@ -56,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:200,
   },
 });
 const buttonStyles = StyleSheet.create({
