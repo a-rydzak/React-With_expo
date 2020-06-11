@@ -8,7 +8,7 @@ import GoalItem from './GoalItem';
 export default function GoalList(props){
     return(
       <FlatList data={props.goals} renderItem={itemData => (
-          <GoalItem itemData={itemData}/>
+          <GoalItem id={itemData.item.id} itemData={itemData} onDelete={props.onDelete} goals={props.goals} setGoals={props.setGoals}/>
         )}
         keyExtractor={(itemData, index) => index.toString()}
         contentContainerStyle={[viewStyles.topDown, { marginVertical: 20 }]}
@@ -16,6 +16,8 @@ export default function GoalList(props){
       </FlatList>
     )
 }
+
+
 //-----------------------------Styles and CSS
 const viewStyles = StyleSheet.create({
     main: { flexDirection: "row", justifyContent: "center" },

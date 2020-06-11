@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function GoalInput(props) {
   return (
-    <View>
-      <Text style={listItemStyles.main}>
-        {props.itemData.index}. {props.itemData.item}
-      </Text>
-    </View>
+    <TouchableOpacity onPress={props.onDelete.bind(this, props.itemData.index)}>
+      <View>
+        <Text style={listItemStyles.main}>
+          {parseInt(props.itemData.index) + 1}. {props.itemData.item}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
+
+
 }
 //-----------------------------Styles and CSS
 const listItemStyles = StyleSheet.create({

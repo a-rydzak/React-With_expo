@@ -30,7 +30,7 @@ export default function App() {
         enteredGoal={enteredGoal}
         setEnteredGoal={setEnteredGoal}
       />
-      <GoalList goals={goals} />
+      <GoalList goals={goals} setGoals={setGoals} onDelete={onDelete}/>
     </View>
   );
   //--------------------------Helper Functions
@@ -40,6 +40,11 @@ export default function App() {
       ? (toUpdateText = "See Lemur?")
       : (toUpdateText = "Ok Lemur!!");
     setOutputText(toUpdateText);
+  }
+  function onDelete(goalId){
+    setGoals(goals =>{
+      return goals.filter((goal,index)=> index !== goalId)
+    });
   }
 }
 //-----------------------------Styles and CSS
