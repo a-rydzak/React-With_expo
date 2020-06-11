@@ -32,6 +32,7 @@ export default function App() {
       />
       <GoalInput
         modalGoalsShown={modalGoalsShown}
+        setModalGoalsShown={setModalGoalsShown}
         addInputToList={addInputToList}
         enteredGoal={enteredGoal}
         setEnteredGoal={setEnteredGoal}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Button, StyleSheet, TextInput, Modal } from "react-native";
 
 export default function GoalInput(props) {
@@ -16,8 +16,13 @@ export default function GoalInput(props) {
         />
         <Button 
           title="Add"
-          color={color}
+          color={'blue'}
           onPress={props.addInputToList}
+        />
+        <Button 
+          title="Cancel"
+          color={color}
+          onPress={props.setModalGoalsShown.bind(this, false)}
         />
       </View>
     </Modal>
