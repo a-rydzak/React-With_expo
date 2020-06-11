@@ -15,6 +15,7 @@ export default function App() {
     const trimEdEnteredGoal = enteredGoal.trim();
     if (trimEdEnteredGoal !== null && trimEdEnteredGoal !== "") {
       setGoals([...goals, enteredGoal]);
+      setEnteredGoal("");
     }
   };
 
