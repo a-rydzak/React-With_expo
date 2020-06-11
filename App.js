@@ -7,11 +7,14 @@ import GoalInput from "./components/GoalInput";
 
 export default function App() {
   // Data/Functionaly Getters/Setters
-  const [outputText, setOutputText] = useState("See Lemur?");
+  const [outputText, setOutputText] = useState("Add Lemurs Goals?");
   const [modalGoalsShown, setModalGoalsShown] = useState(false);
   const [goals, setGoals] = useState([]);
   const [enteredGoal, setEnteredGoal] = useState("");
 
+  // Important!!! Setting everything in one function keeps
+  // Everything to a 1 re-render cycle
+  // Otherwise extra re render cycles
   const addInputToList = () => {
     const trimEdEnteredGoal = enteredGoal.trim();
     if (trimEdEnteredGoal !== null && trimEdEnteredGoal !== "") {
@@ -40,9 +43,9 @@ export default function App() {
   function changeOutputText() {
     let toShowModel = modalGoalsShown
     let toUpdateText = outputText;
-    toUpdateText == "Ok Lemur!!"
-      ? (toUpdateText = "See Lemur?")
-      : (toUpdateText = "Ok Lemur!!");
+    toUpdateText == goals.length !== 0
+      ? (toUpdateText = "You Added A Lemur Goal, Add Another??")
+      : (toUpdateText = "Add Lemurs Goals?!");
     
     toShowModel === false
       ? (toShowModel = true)
